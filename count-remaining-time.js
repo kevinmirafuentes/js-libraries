@@ -1,12 +1,13 @@
 function countRemaniningTime(date, target)
 {
-    if (typeof date != 'object') {
+    if (typeof date != 'object')
         date = new Date(date);
-    }
 
-    if (typeof target != 'object') {
+    if (!target)
+        target = new Date();
+
+    if (typeof target != 'object')
         target = new Date(target);
-    }
 
     var options = [
         { unit: 'year', ms: 31536000000 },
@@ -27,7 +28,6 @@ function countRemaniningTime(date, target)
             if (val > 0) {
                 output.push(val + options[x].unit + (val > 1 ? 's' : ''));
                 dateDiff -= (options[x].ms * val);
-                //console.log('dateDiff: ' + dateDiff);
                 break;
             }
         }
